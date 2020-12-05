@@ -72,3 +72,48 @@ function moveAllZerosToEnd(arrayOfNumbers) {
 }
 
 moveAllZerosToEnd([0,1,0,3,12]);
+
+// Removing duplicates of an array and returning an array of only unique elements
+
+function removingDuplicates(array) {
+    let uniqueCollection = [... new Set(array)]
+    return uniqueCollection;
+}
+
+removingDuplicates([1, 2, 3, 5, 1, 5, 9, 1, 2, 8])
+
+
+//Find the intersection of two arrays. An intersection would be the common elements that exists within both arrays. In this case, these elements should be unique!
+function findIntersection(array1, array2) {
+    let firstArr = array1;
+    let secondArr = array2;
+
+    const result = firstArr.filter(val => secondArr.includes(val));
+
+    return result;
+}
+
+findIntersection([2, 2, 4, 1], [1, 2, 0, 2]);
+
+
+// Given a string, reverse each word in the sentence
+function reverseSentence(string) {
+    let sentenceArray = string.split('').reverse().join('');
+    let reverseAgain = sentenceArray.split(' ').reverse().join(' ');
+    
+    return reverseAgain;
+}
+
+reverseSentence('Welcome to this Javascript Guide!')
+
+
+// Given two arrays of temperatures, return difference of min and max temperature.
+function calcTempAmplitude(arr1, arr2) {
+    const mergedArray = [...arr1, ...arr2];
+    const minTemp = Math.min(...mergedArray);
+    const maxTemp = Math.max(...mergedArray);
+    
+    return maxTemp - minTemp;
+}
+
+calcTempAmplitude([3, -2, -6, -1, 3, 5, 9],[9, 13, 17, 15, 14, 9, 5])
