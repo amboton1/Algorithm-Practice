@@ -116,4 +116,44 @@ function calcTempAmplitude(arr1, arr2) {
     return maxTemp - minTemp;
 }
 
-calcTempAmplitude([3, -2, -6, -1, 3, 5, 9],[9, 13, 17, 15, 14, 9, 5])
+calcTempAmplitude([3, -2, -6, -1, 3, 5, 9],[9, 13, 17, 15, 14, 9, 5]);
+
+
+// Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
+function twoSum(array, target) {
+    const nums = array;
+    for (let index = 0; index < nums.length; index++) {
+        if (nums[index] + nums[index + 1] === target) {
+            return [index, index + 1]
+        }
+    }
+}
+
+twoSum([2, 7, 11, 15], 9);
+
+
+//Given a binary array, find the maximum number of consecutive 1s in this array. The input array will only contain 0 and 1.
+function maxConsecutiveOnes(array) {
+    const binaryArray = array;
+    let counter = 0;
+    for (let index = 0; index < binaryArray.length; index++) {
+        if (binaryArray[index] === 1) {
+            counter += 1;
+        } else {
+            counter = 0;
+        }
+    }
+
+    return counter;
+}
+
+maxConsecutiveOnes([1,1,0,1,1,1,0,1,1,1,1]);
+
+
+// Given two sorted integer arrays nums1 and nums2, merge nums2 into nums1 as one sorted array.
+function mergeSortedArray(arr1, arr2) {
+    let mergedArray = arr1.splice(0, arr2.length).concat(arr2).sort((a,b) => a - b);
+    return mergedArray;
+}
+
+mergeSortedArray([1,2,3,0,0,0], [2,5,6])
