@@ -157,3 +157,39 @@ function mergeSortedArray(arr1, arr2) {
 }
 
 mergeSortedArray([1,2,3,0,0,0], [2,5,6])
+
+
+// Given an array, nums , of n integers, find all unique triplets (three numbers, a, b, & c) in nums such that a + b + c = 0. Note that there may not be any triplets that sum to zero in nums , and that the triplets must not be duplicates.
+function sumZero(array) {
+    const newArr = array;
+    let lust = [];
+    for (let index = 0; index < newArr.length; index++) {
+        for (let index2 = 1; index2 < newArr.length; index2++) {
+            for (let index3 = 2; index3 < newArr.length; index3++) {
+                if(newArr[index] + newArr[index2] + newArr[index3] === 0) {
+                    lust.push(newArr[index], newArr[index2], newArr[index3])
+                }
+            }
+        }
+    }
+    return lust;
+}
+
+sumZero([0, -1, 2, -3, 1])
+
+
+//Given an integer array arr, return true if there are three consecutive odd numbers in the array. Otherwise, return false.
+function consecutiveOddNumbers(array) {
+    let copyArray = array;
+    let bool = 0;
+
+    for (let index = 1; index < array.length; index++) {
+        if ((copyArray[index - 1]) % 2 !== 0) {
+            bool += 1;
+            if (bool === 3) return true;
+        }
+    }
+    return false;
+}
+
+consecutiveOddNumbers([1.7,8,2,4,5,11,7]);
