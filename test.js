@@ -193,3 +193,96 @@ function consecutiveOddNumbers(array) {
 }
 
 consecutiveOddNumbers([1.7,8,2,4,5,11,7]);
+
+
+function twoNumberSum(array, target) {
+    let copiedArray = array;
+    let result = [];
+    for (let index = 0; index < copiedArray.length; index++) {
+        for (let index2 = index + 1; index2 < copiedArray.length; index2++) {
+            if (copiedArray[index] + copiedArray[index2] === target) {
+                result.push(copiedArray[index], copiedArray[index2]);
+            }
+        }
+    }
+    return result;
+}
+
+twoNumberSum([3, 5, -4, 8, 11, 1, -1, 6], 10);
+
+
+function reverse(string) {
+    return string.split('').reverse().join('');
+}
+
+reverse('Greetings!')
+
+
+function reverse2(string) {
+    let reversed = '';
+    for (let iterator of string) {
+        reversed = iterator + reversed;
+    }
+}
+
+reverse2('apple');
+
+
+function reverse3(string) {
+    let splittedArray = string.split('').reduce((reversed, b) => b + reversed, '');
+    
+    return splittedArray;
+}
+
+reverse3('apple');
+
+
+function isPalindrome(string) {
+    const originalString = string;
+    const reversedString = originalString.split('').reverse().join('');
+    
+    return originalString === reversedString;
+}
+
+isPalindrome('abcdefg');
+
+
+function isPalindrome2(string) {
+    let count = 0;
+    const originalString = string;
+
+    for (let index = 0; index < originalString.length; index++) {
+        for (let index2 = originalString.length - 1; index2 > 0; index2--) {
+            if (originalString[index] === originalString[index2]) {
+                count += 1;
+            }
+        }
+    }
+
+    return count === originalString.length;
+}
+
+isPalindrome2('abcdefg');
+
+// Given a numbers, reverse them - be careful with negative numbers. Exclude zeros from number.
+function reverseInt(int) {
+    let convertedInt = int.toString();
+
+    let splitted = convertedInt.split('').reverse();
+
+    for (let index = 0; index < splitted.length; index++) {
+        if (splitted[index] === '0') {
+            splitted.splice(index, 1);
+        }
+    }
+
+    if (splitted[splitted.length - 1] === '-') {
+        splitted.pop();
+        splitted.unshift('-');
+    }
+
+    return parseInt(splitted.join(''));
+
+}
+
+reverseInt(189);
