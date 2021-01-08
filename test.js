@@ -286,3 +286,48 @@ function reverseInt(int) {
 }
 
 reverseInt(189);
+
+
+function maxChar(string) {
+    let copiedString = string;
+    let chars = {};
+
+    for (let char of copiedString) {
+        chars[char] = chars[char] + 1 || 1;
+    }
+
+    return Object.keys(chars).reduce((a,b) => chars[a] > chars[b] ? a : b);
+}
+
+maxChar("apple 1231172911");
+
+
+function fizzBuzz(number) {
+    for (let index = 1; index <= number; index++) {
+        if(index % 3 === 0 && index % 5 === 0) {
+            console.log('fizzbuzz');
+        } else if (index % 3 === 0) {
+            console.log('fizz');
+        } else if (index % 5 === 0) {
+            console.log('buzz');
+        }
+        console.log(index);
+    }
+}
+
+// fizzBuzz(51)
+
+
+function arrayChunking(array, chunksSize) {
+    let copiedArray = array;
+    let newArr = [];
+    let numberOfChunks = Math.ceil(copiedArray.length / chunksSize);
+
+    for (let index = 0; index < numberOfChunks; index++) {
+        newArr.push(copiedArray.splice(0, chunksSize));
+    }
+
+    return newArr;
+}
+
+arrayChunking([1, 2, 3, 4, 5], 2);
