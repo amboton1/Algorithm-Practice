@@ -331,3 +331,108 @@ function arrayChunking(array, chunksSize) {
 }
 
 arrayChunking([1, 2, 3, 4, 5], 2);
+
+function arrayChunking2(array, chunkSize) {
+    const chunked = [];
+
+    for (let element of array) {
+        const last = chunked[chunked.length - 1];
+
+        if (!last || last.length === chunkSize) {
+            chunked.push([element]);
+        } else {
+            last.push(element);
+        }
+    }
+
+    return chunked;
+}
+
+arrayChunking2([1, 2, 3, 4, 5], 2);
+
+
+function anagarms(str1, str2) {
+    const string1 = str1.replace(/[^\w]/g, '').toLowerCase();
+    const string2 = str2.replace(/[^\w]/g, '').toLowerCase();
+
+    const sortedFirstOne = string1.split('').sort();
+    const sortedSecondOne = string2.split('').sort();
+
+    return sortedFirstOne.every((value, index) => value === sortedSecondOne[index]);
+}
+
+anagarms('rail safety', 'fairy tales');
+
+
+function anagrams2(string1, string2) {
+    const charMap1 = {};
+    const charMap2 = {};
+
+    for (const char of string1.replace(/[^\w]/g, '').toLowerCase()) {
+        charMap1[char] = charMap1[char] + 1 || 1;
+    }
+
+    for (const char of string2.replace(/[^\w]/g, '').toLowerCase()) {
+        charMap2[char] = charMap2[char] + 1 || 1;
+    }
+
+    if (Object.keys(charMap1).length !== Object.keys(charMap2).length) {
+        return false;
+    }
+
+    for (const char in charMap1) {
+        if (charMap1[char] !== charMap2[char]) {
+            return false;
+        }
+    }
+
+    return false;
+
+}
+
+anagrams2('rail safety', 'fairy tales');
+
+
+function startSentenceCloseToTarget(string, wordsBefore, wordsAfter, target) {
+    let sentence = string;
+    let arrayOfWords = sentence.toLowerCase().split(' ').map(word => word.replace(/\W/, ''));
+    
+    let indexOfMatchedWord = arrayOfWords.indexOf(target.toLowerCase());
+
+    if (indexOfMatchedWord === -1) {
+        return sentence;
+    }
+
+    let startIndex = indexOfMatchedWord - wordsBefore;
+    let endIndex = indexOfMatchedWord + wordsAfter + 1;
+
+    startIndex = startIndex < 0 ? 0 : startIndex;
+    endIndex = endIndex >= arrayOfWords.length ? arrayOfWords.length : endIndex;
+
+    let finalResult = sentence.split(' ').slice(startIndex, endIndex).join(' ');
+
+    return finalResult;
+}
+
+startSentenceCloseToTarget('Gle malu vocku poslije kise, puna je kapi pa se njise! I blijesti suncem obasjana cudesna je raskos njenih grana. Al nek se sunce malko skrije nestane sve te carolije. I ona je opet kao prvo obicno malo jadno drvo.', 5, 5, 'carolije');
+
+
+function makeKeywordBold(sentence, keyword) {
+    let sentenceWords = sentence.toLowerCase().split(' ').map(word => word.replace(/\W/, ''));
+
+    let indexOfMatchedWord = sentenceWords.indexOf(keyword.toLowerCase());
+
+    if (indexOfMatchedWord === -1) return sentence;
+
+    const originalArraySplitted = sentence.split(' ');
+    
+    for (let index = 0; index < originalArraySplitted.length; index++) {
+        if (index === indexOfMatchedWord) {
+            originalArraySplitted[index] = originalArraySplitted[index].replace(keyword, `<b>${keyword}</b>`);
+        }
+    }
+
+    return originalArraySplitted.join(' ');
+}
+
+makeKeywordBold('Gle malu vocku poslije kise, puna je kapi pa se njise! I blijesti suncem obasjana cudesna je raskos njenih grana. Al nek se sunce malko skrije nestane sve te carolije. I ona je opet kao prvo obicno malo jadno drvo.', 'carolije')
