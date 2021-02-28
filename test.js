@@ -386,7 +386,7 @@ function anagrams2(string1, string2) {
         }
     }
 
-    return false;
+    return true;
 
 }
 
