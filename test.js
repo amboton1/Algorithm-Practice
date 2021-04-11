@@ -288,6 +288,19 @@ function reverseInt(int) {
 reverseInt(189);
 
 
+function reverseInt2(int) {
+    let reversed =
+        int.toString()
+            .split('')
+            .reverse()
+            .join('');
+    
+    return parseInt(reversed) * Math.sign(int);
+}
+
+reverseInt2(-79);
+
+
 function maxChar(string) {
     let copiedString = string;
     let chars = {};
@@ -352,13 +365,10 @@ arrayChunking2([1, 2, 3, 4, 5], 2);
 
 
 function anagarms(str1, str2) {
-    const string1 = str1.replace(/[^\w]/g, '').toLowerCase();
-    const string2 = str2.replace(/[^\w]/g, '').toLowerCase();
+    const string1 = str1.replace(/[^\w]/g, '').toLowerCase().split('').sort();
+    const string2 = str2.replace(/[^\w]/g, '').toLowerCase().split('').sort();
 
-    const sortedFirstOne = string1.split('').sort();
-    const sortedSecondOne = string2.split('').sort();
-
-    return sortedFirstOne.every((value, index) => value === sortedSecondOne[index]);
+    return string1.every((value, index) => value === string2[index]);
 }
 
 anagarms('rail safety', 'fairy tales');
@@ -436,3 +446,33 @@ function makeKeywordBold(sentence, keyword) {
 }
 
 makeKeywordBold('Gle malu vocku poslije kise, puna je kapi pa se njise! I blijesti suncem obasjana cudesna je raskos njenih grana. Al nek se sunce malko skrije nestane sve te carolije. I ona je opet kao prvo obicno malo jadno drvo.', 'carolije')
+
+// Write a function that accepts a string. The function should capitalize the first letter of each word in the string and the return the capitalized string.
+function capitalization(str) {
+    let words = str.split(' ');    
+    
+    for (let index = 0; index < words.length; index++) {
+        words[index] = words[index][0].toUpperCase() + words[index].slice(1);
+    }
+
+    return words.join(' ');
+}
+
+capitalization('this is an amazing sentence.')
+
+
+function capitalization2(str) {
+    let result = str[0].toUpperCase();
+
+    for (let index = 1; index < str.length; index++) {
+        if (str[index - 1] === ' ') {
+            result += str[index].toUpperCase();
+        } else {
+            result += str[index];
+        }
+    }
+
+    return result;
+}
+
+capitalization2('this is an amazing sentence.')
