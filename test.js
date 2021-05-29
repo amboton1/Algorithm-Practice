@@ -288,6 +288,19 @@ function reverseInt(int) {
 reverseInt(189);
 
 
+function reverseInt2(int) {
+    let reversed =
+        int.toString()
+            .split('')
+            .reverse()
+            .join('');
+    
+    return parseInt(reversed) * Math.sign(int);
+}
+
+reverseInt2(-79);
+
+
 function maxChar(string) {
     let copiedString = string;
     let chars = {};
@@ -352,13 +365,10 @@ arrayChunking2([1, 2, 3, 4, 5], 2);
 
 
 function anagarms(str1, str2) {
-    const string1 = str1.replace(/[^\w]/g, '').toLowerCase();
-    const string2 = str2.replace(/[^\w]/g, '').toLowerCase();
+    const string1 = str1.replace(/[^\w]/g, '').toLowerCase().split('').sort();
+    const string2 = str2.replace(/[^\w]/g, '').toLowerCase().split('').sort();
 
-    const sortedFirstOne = string1.split('').sort();
-    const sortedSecondOne = string2.split('').sort();
-
-    return sortedFirstOne.every((value, index) => value === sortedSecondOne[index]);
+    return string1.every((value, index) => value === string2[index]);
 }
 
 anagarms('rail safety', 'fairy tales');
@@ -436,3 +446,126 @@ function makeKeywordBold(sentence, keyword) {
 }
 
 makeKeywordBold('Gle malu vocku poslije kise, puna je kapi pa se njise! I blijesti suncem obasjana cudesna je raskos njenih grana. Al nek se sunce malko skrije nestane sve te carolije. I ona je opet kao prvo obicno malo jadno drvo.', 'carolije')
+
+// Write a function that accepts a string. The function should capitalize the first letter of each word in the string and the return the capitalized string.
+function capitalization(str) {
+    let words = str.split(' ');    
+    
+    for (let index = 0; index < words.length; index++) {
+        words[index] = words[index][0].toUpperCase() + words[index].slice(1);
+    }
+
+    return words.join(' ');
+}
+
+capitalization('this is an amazing sentence.')
+
+
+function capitalization2(str) {
+    let result = str[0].toUpperCase();
+
+    for (let index = 1; index < str.length; index++) {
+        if (str[index - 1] === ' ') {
+            result += str[index].toUpperCase();
+        } else {
+            result += str[index];
+        }
+    }
+
+    return result;
+}
+
+capitalization2('this is an amazing sentence.');
+
+
+// Write a loop that makes seven calls to console.log to output triangle
+function generateSteps(n) {
+    let triangle = '';
+
+    for (let index = 0; index < n; index++) {
+        triangle += '#';
+        console.log(triangle);
+    }
+}
+
+// generateSteps(8);
+
+function generateSteps2(n) {
+    for (let row = 0; row < n; row++) {
+        let stairs = '';
+        for (let column = 0; column < n; column++) {
+            if (column <= row) {
+                stairs += '#';
+            } else {
+                stairs += ' ';
+            }
+        }
+        console.log(stairs);
+    }
+}
+
+// generateSteps2(6)
+
+
+function pyramid(n) {
+    const midpoint = Math.floor((2 * n - 1) / 2);
+
+    for (let row = 0; row < n; row++) {
+        let level = '';
+
+        for (let column = 0; column < 2 * n - 1; column++) {
+            if (midpoint - row <= column && midpoint + row >= column) {
+                level += '#';
+            } else {
+                level += ' '
+            }
+        }
+
+        console.log(level);
+    }
+}
+
+// pyramid(3)
+
+
+function vowels(string) {
+    let count = 0;
+    let vowels = ['a', 'e', 'i', 'o', 'u'];
+    let stringSplitted = string.split('');
+
+    for (let index = 0; index < stringSplitted.length; index++) {
+        for (let index2 = 0; index2 < vowels.length; index2++) {
+            if (stringSplitted[index] === vowels[index2]) {
+                count += 1;
+            }
+        }
+    }
+
+    console.log(count);
+}
+
+// vowels('Hi there!')
+
+
+function vowels2(string) {
+    let stringSplitted = string.split('');
+
+    let results = stringSplitted.filter(str => /^[aeiou]/.test(str));
+    console.log(results.length);
+}
+
+
+function vowels3(string) {
+    let vowels = ['a', 'e', 'i', 'o', 'u'];
+    let count = 0;
+
+    for (const char of string.toLowerCase()) {
+        if (vowels.includes(char)) {
+            count++;
+        }
+    }
+
+    console.log(count);
+}
+
+// vowels3('Why do you ask?')
