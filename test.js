@@ -475,4 +475,97 @@ function capitalization2(str) {
     return result;
 }
 
-capitalization2('this is an amazing sentence.')
+capitalization2('this is an amazing sentence.');
+
+
+// Write a loop that makes seven calls to console.log to output triangle
+function generateSteps(n) {
+    let triangle = '';
+
+    for (let index = 0; index < n; index++) {
+        triangle += '#';
+        console.log(triangle);
+    }
+}
+
+// generateSteps(8);
+
+function generateSteps2(n) {
+    for (let row = 0; row < n; row++) {
+        let stairs = '';
+        for (let column = 0; column < n; column++) {
+            if (column <= row) {
+                stairs += '#';
+            } else {
+                stairs += ' ';
+            }
+        }
+        console.log(stairs);
+    }
+}
+
+// generateSteps2(6)
+
+
+function pyramid(n) {
+    const midpoint = Math.floor((2 * n - 1) / 2);
+
+    for (let row = 0; row < n; row++) {
+        let level = '';
+
+        for (let column = 0; column < 2 * n - 1; column++) {
+            if (midpoint - row <= column && midpoint + row >= column) {
+                level += '#';
+            } else {
+                level += ' '
+            }
+        }
+
+        console.log(level);
+    }
+}
+
+// pyramid(3)
+
+
+function vowels(string) {
+    let count = 0;
+    let vowels = ['a', 'e', 'i', 'o', 'u'];
+    let stringSplitted = string.split('');
+
+    for (let index = 0; index < stringSplitted.length; index++) {
+        for (let index2 = 0; index2 < vowels.length; index2++) {
+            if (stringSplitted[index] === vowels[index2]) {
+                count += 1;
+            }
+        }
+    }
+
+    console.log(count);
+}
+
+// vowels('Hi there!')
+
+
+function vowels2(string) {
+    let stringSplitted = string.split('');
+
+    let results = stringSplitted.filter(str => /^[aeiou]/.test(str));
+    console.log(results.length);
+}
+
+
+function vowels3(string) {
+    let vowels = ['a', 'e', 'i', 'o', 'u'];
+    let count = 0;
+
+    for (const char of string.toLowerCase()) {
+        if (vowels.includes(char)) {
+            count++;
+        }
+    }
+
+    console.log(count);
+}
+
+// vowels3('Why do you ask?')
