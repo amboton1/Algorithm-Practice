@@ -569,3 +569,58 @@ function vowels3(string) {
 }
 
 // vowels3('Why do you ask?')
+
+
+// Spiral matrix problem
+function showSpiralMatrix(n) {
+    let results = [];
+
+    for (let index = 0; index < n; index++) {
+        results.push([]);
+    }
+
+    let counter = 1;
+    let startColumn = 0;
+    let endColumn = n - 1;
+    let startRow = 0;
+    let endRow = n - 1;
+
+    while (startColumn <= endColumn && startRow <= endRow) {
+        // top row
+        for (let index = startColumn; index <= endColumn; index++) {
+            results[startRow][index] = counter;
+            counter++;
+        }
+
+        startRow++;
+
+        // right column
+        for (let index = startRow; index <= endRow; index++) {
+            results[index][endColumn] = counter;
+            counter++;
+        }
+
+        endColumn--;
+
+        // bottom row
+        for (let index = endColumn; index >= startColumn; index--) {
+            results[endRow][index] = counter;
+            counter++;
+        }
+
+        endRow--;
+
+
+        // start column
+        for (let index = endRow; index >= startRow; index--) {
+            results[index][startColumn] = counter;
+            counter++;
+        }
+
+        startColumn++;
+    }
+
+    return results;
+}
+
+showSpiralMatrix(3);
